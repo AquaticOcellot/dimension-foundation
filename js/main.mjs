@@ -1,6 +1,7 @@
 "use strict";
 
-import {Item} from './classes/item.js';
+import {Item} from "./classes/item.js";
+import {buttonsSetup} from "./logic/setup/buttons-setup";
 
 let techProgress = 0;
 let fightProgressAlly = 30;
@@ -34,14 +35,7 @@ function update() {
   document.getElementById("tech-progress-bar").style.width = `${techProgress}%`;
 
 }
-// Move
-function switchWindow(ofClass, targetId) {
-  let windows = document.getElementsByClassName(ofClass);
-  for (let i = 0; i < windows.length; i++) {
-    windows[i].style.display = "none";
-  }
-  document.getElementById(targetId).style.display = "flex";
-}
+
 function addSquad() {
   let squad = document.createElement("div");
   squad.classList.add("squad");
@@ -190,26 +184,13 @@ function makeToggleButtonsVisuals() {
     });
   }
 }
-function makeSwitchButtonsVisuals(ofClass) {
-  let buttonsSwitchMain = document.getElementsByClassName(`${ofClass}`);
-  for (let i = 0; i < buttonsSwitchMain.length; i++) {
-    buttonsSwitchMain[i].addEventListener("mousedown", function () {
-      let buttonsSwitchMain = document.getElementsByClassName(`${ofClass}`);
-      for (let i = 0; i < buttonsSwitchMain.length; i++) {
-        buttonsSwitchMain[i].classList.remove("held");
-      }
-      this.classList.toggle("held");
-    })
-  }
-}
 main();
 function main() {
-  makeSwitchButtonsMechanic("switch-main", "main-window");
-  
+  buttonsSetup();
+
   document.getElementById("add-squad").addEventListener("click", addSquad);
 
   makeToggleButtonsVisuals();
-  makeSwitchButtonsVisuals("switch-main");
 
   createInventory(inventory, 12, 8);
 
@@ -217,12 +198,4 @@ function main() {
 
   let updater = setInterval(update, 1000 / 60);
   setInterval(function() {alert(squadInventories)}, 10000);
-}
-function makeSwitchButtonsMechanic(buttonClass, windowClass) {
-  let buttons = document.getElementsByClassName(`${buttonClass}`);
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("mousedown", function () {
-      switchWindow(windowClass, `${windowClass}-${i}`)
-    })
-  }
 }

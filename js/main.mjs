@@ -205,6 +205,7 @@ function makeSwitchButtonsVisuals(ofClass) {
 main();
 function main() {
   makeSwitchButtonsMechanic("switch-main", "main-window");
+  
   document.getElementById("add-squad").addEventListener("click", addSquad);
 
   makeToggleButtonsVisuals();

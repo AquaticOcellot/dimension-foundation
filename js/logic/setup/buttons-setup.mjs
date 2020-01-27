@@ -1,16 +1,17 @@
 export function buttonsSetup() {
+  alert(1);
   switches();
   toggles();
   clickables();
 }
 
 function switches() {
-  switchesMechanical("switch-main", "main-window");
+  switchMechanical("switch-main", "main-window");
 
-  switchesVisual("switch-main");
+  switchVisual("switch-main");
 }
 
-function switchesMechanical(buttonClass, windowClass) {
+function switchMechanical(buttonClass, windowClass) {
   let buttons = document.getElementsByClassName(`${buttonClass}`);
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("mousedown", function () {
@@ -27,7 +28,7 @@ function switchWindow(windowClass, targetWindow) {
   document.getElementById(targetWindow).style.display = "flex";
 }
 
-function switchesVisual(buttonClass) {
+function switchVisual(buttonClass) {
   let buttonsSwitchMain = document.getElementsByClassName(`${buttonClass}`);
   for (let i = 0; i < buttonsSwitchMain.length; i++) {
     buttonsSwitchMain[i].addEventListener("mousedown", function () {

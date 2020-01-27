@@ -1,28 +1,25 @@
-"use strict";
-
-import {Item} from "./classes/item.js";
-import {buttonsSetup} from "./logic/setup/buttons-setup";
+import {Item} from "./classes/item.mjs";
+import {mainSetup} from "./logic/setup/main-setup.mjs";
 
 let techProgress = 0;
 let fightProgressAlly = 30;
 let inventory = [];
 let squadInventories = [];
-let greys = ["#cccccc", "#dddddd"];
 
-function add(id, value) {
-  document.getElementById(id).innerText = Number(document.getElementById(id).innerText) + value;
-}
-function addFrom(id, fromId) {
-  add(id, Number(document.getElementById(fromId).innerText));
-}
-function set(id, newValue) {
-  document.getElementById(id).innerText = newValue;
-}
-function toggleButton(id) {
-  document.getElementById(id).classList.toggle("held");
-}
-function pressButton(id) {
-  document.getElementById(id).classList.toggle("held");
+main();
+function main() {
+  mainSetup();
+
+  document.getElementById("add-squad").addEventListener("click", addSquad);
+
+  makeToggleButtonsVisuals();
+
+  createInventory(inventory, 12, 8);
+
+  addItemToInventorySlot(new Item("resource", "iron", 1), 2, 4);
+
+  let updater = setInterval(update, 1000 / 60);
+  setInterval(function() {alert(squadInventories)}, 10000);
 }
 function update() {
   techProgress += 1 / 60;
@@ -36,29 +33,9 @@ function update() {
 
 }
 
-function addSquad() {
-  let squad = document.createElement("div");
-  squad.classList.add("squad");
-  squad.style.backgroundColor = greys[(document.getElementById("inventory-squads").childElementCount + 1) % 2];
 
-  let squadHeader = document.createElement("div");
-  squadHeader.classList.add("squad-header");
-  squad.appendChild(squadHeader);
 
-  let squadInventory = document.createElement("div");
-  squadInventory.classList.add("squad-inventory");
-  squadInventories.push([]);
 
-  for (let i = 0; i < 6; i++) {
-    let itemSlot = document.createElement("div");
-    itemSlot.classList.add("squad-inventory-slot", "item-drop");
-    squadInventory.appendChild(itemSlot);
-    squadInventories[squadInventories.length - 1].push(null);
-  }
-
-  squad.appendChild(squadInventory);
-  document.getElementById("add-squad").before(squad);
-}
 function createInventory(inventory, rows, slots) {
   for (let row = 0; row < rows; row++) {
     createRow(inventory, row, slots);
@@ -183,19 +160,4 @@ function makeToggleButtonsVisuals() {
       this.classList.toggle("held")
     });
   }
-}
-main();
-function main() {
-  buttonsSetup();
-
-  document.getElementById("add-squad").addEventListener("click", addSquad);
-
-  makeToggleButtonsVisuals();
-
-  createInventory(inventory, 12, 8);
-
-  addItemToInventorySlot(new Item("resource", "iron", 1), 2, 4);
-
-  let updater = setInterval(update, 1000 / 60);
-  setInterval(function() {alert(squadInventories)}, 10000);
 }

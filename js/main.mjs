@@ -1,8 +1,9 @@
-import {Item} from "./classes/item.mjs";
 import {mainSetup} from "./logic/setup/main-setup.mjs";
+import {update} from "./logic/update.mjs";
 
-let techProgress = 0;
-let fightProgressAlly = 30;
+import {Item} from "./classes/item.mjs";
+import {greys} from "./constants.mjs";
+
 let inventory = [];
 let squadInventories = [];
 
@@ -10,31 +11,13 @@ main();
 function main() {
   mainSetup();
 
-  document.getElementById("add-squad").addEventListener("click", addSquad);
+  setInterval(update, 1000 / 60);
+  setInterval(function() {alert(squadInventories)}, 10000);
 
-  makeToggleButtonsVisuals();
-
-  createInventory(inventory, 12, 8);
+  createInventory(inventory, 5, 8);
 
   addItemToInventorySlot(new Item("resource", "iron", 1), 2, 4);
-
-  let updater = setInterval(update, 1000 / 60);
-  setInterval(function() {alert(squadInventories)}, 10000);
 }
-function update() {
-  techProgress += 1 / 60;
-  while (techProgress > 100) {
-    techProgress -= 100;
-    fightProgressAlly += 1;
-    document.getElementById("fight-progress-bar-ally").style.width = `${fightProgressAlly}%`;
-  }
-  document.getElementById("tech-progress-text").innerText = `${Math.floor(techProgress)}`;
-  document.getElementById("tech-progress-bar").style.width = `${techProgress}%`;
-
-}
-
-
-
 
 function createInventory(inventory, rows, slots) {
   for (let row = 0; row < rows; row++) {
@@ -145,19 +128,11 @@ function updateInventory() {
   }
   for (let squad = 0; squad < squadInventories.length; squad++) {
     for (let slot = 0; slot < squadInventories[squad].length; slot++) {
-      if (document.getElementById("inventory-squads").children[squad].children[1].children[slot].hasChildNodes()) {
+      if (document.getElementById("inventory-quads").children[squad].children[1].children[slot].hasChildNodes()) {
         squadInventories[squad][slot] = document.getElementById("inventory-squads").children[squad].children[1].children[slot].children[0].classList[2];
       } else {
         squadInventories[squad][slot] = null;
       }
     }
-  }
-}
-function makeToggleButtonsVisuals() {
-  let buttonsToggle = document.getElementsByClassName("button-toggle");
-  for (let i = 0; i < buttonsToggle.length; i++) {
-    buttonsToggle[i].addEventListener("mousedown", function () {
-      this.classList.toggle("held")
-    });
   }
 }

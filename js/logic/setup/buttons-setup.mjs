@@ -1,5 +1,6 @@
+import {toggleButtons} from "../../visualization/toggleButtons.mjs";
+
 export function buttonsSetup() {
-  alert(1);
   switches();
   toggles();
   clickables();
@@ -42,7 +43,7 @@ function switchVisual(buttonClass) {
 }
 
 function toggles() {
-
+  toggleButtons();
 }
 
 function clickables() {

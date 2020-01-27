@@ -1,7 +1,7 @@
 import {buttonsSetup} from "./buttons-setup.mjs";
-import {addSquad} from "../../visualization/add-squad";
+import {addEventListeners} from "./add-event-listeners.mjs";
 
 export function mainSetup() {
   buttonsSetup();
-  addSquad();
+  addEventListeners()
 }

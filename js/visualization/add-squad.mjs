@@ -1,6 +1,6 @@
-import {greys} from "../constants"
+import {greys} from "../constants.mjs";
 
-export function addSquad() {
+export function newSquad() {
   let squad = document.createElement("div");
   squad.classList.add("squad");
   squad.style.backgroundColor = greys[(document.getElementById("inventory-squads").childElementCount + 1) % 2];
@@ -18,5 +18,5 @@ export function addSquad() {
     squadInventory.appendChild(itemSlot);
   }
   squad.appendChild(squadInventory);
-  document.getElementById("add-squad").before(squad);
+  document.getElementById("new-squad").before(squad);
 }

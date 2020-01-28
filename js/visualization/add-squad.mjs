@@ -10,11 +10,11 @@ export function newSquad() {
   squad.appendChild(squadHeader);
 
   let squadInventory = document.createElement("div");
-  squadInventory.classList.add("squad-inventory");
+  squadInventory.classList.add("inventory");
 
   for (let i = 0; i < 6; i++) {
     let itemSlot = document.createElement("div");
-    itemSlot.classList.add("squad-inventory-slot", "item-drop");
+    itemSlot.classList.add("inventory-slot", "item-drop");
     squadInventory.appendChild(itemSlot);
   }
   squad.appendChild(squadInventory);

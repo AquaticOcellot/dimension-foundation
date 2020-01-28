@@ -1,4 +1,4 @@
-import {toggleButtons} from "../../visualization/toggleButtons.mjs";
+import {toggleButtons} from "../visualization/toggleButtons.mjs";
 
 export function buttonsSetup() {
   switches();

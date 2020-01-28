@@ -30,7 +30,7 @@ export class Inventory {
     for (let slot = 0; slot < this.slots; slot++) {
       let newSlot = document.createElement("div");
       newSlot.classList.add("inventory-slot", "item-drop");
-      newSlot.style.backgroundColor = greys[(slot + Math.floor(slot / this.slots)) % 2];
+      newSlot.style.backgroundColor = greys[(slot + Math.floor(slot / 8)) % 2];
 
       this.htmlElement.appendChild(newSlot);
     }

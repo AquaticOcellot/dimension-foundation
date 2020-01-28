@@ -71,7 +71,6 @@ body {
   flex: 1;
 }
 .inventory{
-  overflow-scrolling: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -190,6 +189,5 @@ body {
   flex: 40;
   background-color: #ddffff;
   display: flex;
-  flex-direction: column;
   overflow: auto;
 }

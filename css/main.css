@@ -7,6 +7,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  font-size: 4vh;
 }
 
 .progress-background {
@@ -25,22 +26,21 @@ body {
 .button {
   position: relative;
   user-select: none;
+  height: 3vw;
 }
 .button-shade {
   background-color: lightgray;
-  box-shadow: 10px 10px gray;
+  box-shadow: 0.5vw 0.5vw gray;
   transition: 0.15s;
   vertical-align: middle;
   text-align: center;
-
-  line-height: 50px;
 }
 .button-shade:active {
-  transform: translate(10px, 10px);
+  transform: translate(0.5vw, 0.5vw);
   box-shadow: 0 0 gray;
 }
 .button-shade.held {
-  transform: translate(10px, 10px);
+  transform: translate(0.5vw, 0.5vw);
   box-shadow: 0 0 gray;
 }
 .main-window {
@@ -55,17 +55,15 @@ body {
   position: fixed;
 }
 .squads {
-  height: 100%;
-  max-height: 100%;
-  flex: 30;
+  width: 30vw;
+  height: inherit;
   background-color: #ffdddd;
   overflow: auto;
 }
 .squad {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 200px;
+  height: 20vh;
 }
 .squad-header {
   flex: 1;
@@ -75,14 +73,9 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.squad-inventory-slot {
-  width: 16.66666%;
-  padding-bottom: 16.66666%;
-  position: relative;
-}
 .inventory-slot {
-  width: 12.5%;
-  padding-bottom: 12.5%;
+  width: 5vw;
+  padding-bottom: 5vw;
   position: relative;
 }
 .iron {
@@ -94,31 +87,34 @@ body {
 
 #top-bar {
   display: flex;
-  height: 100px;
-  width: 100%;
+  height: 10vh;
+  width: 100vw;
 }
 #dimension-icon {
-  width: 100px;
+  width: 5vw;
+  height: inherit;
 }
 #info-container {
-  width: 100%;
+  width: 95vw;
 }
 #global-info {
+  height: 5vh;
   display: flex;
   justify-content: space-between;
 }
 #tech-progress-background {
-  width: 90%;
-  height: 50px;
+  width: 80vw;
+  height: inherit;
 }
 #tech-progress-text {
-  line-height: 50px;
 }
 #tech-progress-bar {
-  width: 50%;
+  width: 0;
+  height: inherit;
   background-color: lightblue;
 }
 #local-info {
+  height: 5vh;
   display: flex;
   justify-content: space-between;
 }
@@ -126,29 +122,28 @@ body {
   display: flex;
 }
 #fight-progress-background {
-  width: 90%;
-  height: 50px;
+  width: 80vw;
+  height: inherit;
   display: flex;
   justify-content: space-between;
 }
 #fight-progress-text {
-  line-height: 50px;
 }
 #fight-progress-bar-ally {
-  width: 30%;
+  width: 0;
   background-color: lightgreen;
 }
 #fight-progress-bar-enemy {
-  width: 20%;
+  width: 0;
   background-color: lightcoral;
 }
 #bottom {
-  height: calc(100% - 100px);
+  height: 90vh;
   display: flex;
 }
 #left-bar {
-  width: 50px;
-  height: 100%;
+  width: 3vw;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -173,21 +168,23 @@ body {
 #main-window-2 {
   background-color: lightgreen;
 }
-#squad {
+#squads {
 }
 #new-squad {
-  width: 100%;
+  width: inherit;
   height: 200px;
 }
 #selected-unit{
-  height: 100%;
-  flex: 30;
+  width: 27vw;
+  height: inherit;
   background-color: #ddffdd;
 }
 #inventory {
-  height: 100%;
-  flex: 40;
+  width: 40vw;
+  height: inherit;
   background-color: #ddffff;
-  display: flex;
   overflow: auto;
+}
+::-webkit-scrollbar {
+  width: 0;
 }

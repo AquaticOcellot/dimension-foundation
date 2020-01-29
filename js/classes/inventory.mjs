@@ -7,10 +7,10 @@ export class Inventory {
     this.storageType = storageType;
     this.slots = slots;
     this.items = [];
+    this.createHtml();
   }
   pushItem(item) {
     this.items.push(item);
-    this.createHtml();
     this.updateHtml();
   }
   takeItem(position) {
@@ -37,13 +37,13 @@ export class Inventory {
   }
   updateHtml() {
     for (let i = 0; i < this.slots; i++) {
-      if (this.htmlElement.children[i] == null) {
+      if (this.htmlElement.children[i] === undefined) {
 
       } else {
         let item = document.createElement("div");
         item.classList.add("item", this.items[i].name);
         item.addEventListener("mousedown", grabItem);
-        this.htmlElement.children[0].children[i].appendChild(item);
+        this.htmlElement.children[i].appendChild(item);
       }
     }
   }

@@ -11,7 +11,9 @@ function main() {
   mainSetup();
 
   setInterval(update, 1000 / 60);
-  //setInterval(function() {alert(inventory.items)}, 10000);
+  //setInterval(function() {alert(inventory.items[0].name)}, 10000);
 
   inventory.pushItem(new Item("resource", "iron", 1));
+  inventory.pushItem(new Item("resource", "steel", 1));
+  inventory.pushItem(new Item("resource", "steel", 1));
 }

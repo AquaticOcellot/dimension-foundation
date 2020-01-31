@@ -50,8 +50,8 @@ body {
   flex: 1;
 }
 .portal {
-  width: 50px;
-  height: 50px;
+  width: 3vw;
+  height: 3vw;
   position: fixed;
 }
 .squads {
@@ -69,6 +69,7 @@ body {
   flex: 1;
 }
 .inventory{
+  align-content: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -78,11 +79,16 @@ body {
   padding-bottom: 5vw;
   position: relative;
 }
-.iron {
-  width: 100%;
-  height: 100%;
-  background-color: darkmagenta;
+.item {
+  width: 5vw;
+  height: 5vw;
   position: absolute;
+}
+.iron {
+  background-color: lightsteelblue;
+}
+.steel {
+  background-color: steelblue;
 }
 
 #top-bar {

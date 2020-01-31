@@ -37,13 +37,15 @@ export class Inventory {
   }
   updateHtml() {
     for (let i = 0; i < this.slots; i++) {
-      if (this.htmlElement.children[i] === undefined) {
+      if (this.items[i] === undefined) {
 
       } else {
-        let item = document.createElement("div");
-        item.classList.add("item", this.items[i].name);
-        item.addEventListener("mousedown", grabItem);
-        this.htmlElement.children[i].appendChild(item);
+        if (!this.htmlElement.children[i].hasChildNodes()) {
+          let item = document.createElement("div");
+          item.classList.add("item", this.items[i].name);
+          item.addEventListener("mousedown", grabItem);
+          this.htmlElement.children[i].appendChild(item);
+        }
       }
     }
   }
